@@ -1,0 +1,96 @@
+Title: learn numbers
+
+=== RHYME ===
+Clap, clap, little hands, clap in a row,
+Tap, tap, tiny toes, off we go!
+Share your smile, bright and wide,
+Friends together, side by side.
+Zoom goes the toy car, round and round,
+Happy giggles are the best sound.
+Take a turn, then let it be,
+Sharing makes it fun for three!
+Build a tower, one, two, three,
+Cheer for friends so happily,
+Play, learn, laugh, in harmony!
+
+
+=== RHYME MUSIC STYLE PROMPT ===
+User Prompt: create kids cheerful rhyme that can help then to learn numbers. Create cheerful, child-safe instrumental nursery music for 60 seconds, with a soft, gentle intro (do not make the beginning too heavy), gentle percussion, playful marimba and ukulele textures, bright major-key harmony, steady 120 BPM groove, no vocals, smooth loop-friendly ending.
+
+=== VISUAL STYLE GUIDE ===
+{
+  "style": "Cocomelon-like 3D cartoon animation, rounded forms, soft global illumination, bright pastel nursery palette",
+  "characters": [
+    "two preschool kids",
+    "a smiling toy car"
+  ],
+  "palette": "sky blue, sunny yellow, candy pink, leaf green",
+  "camera_language": "gentle dolly moves, medium and close shots, playful pacing",
+  "render_notes": "clean toy-like materials, smooth shading, soft shadows, kid-friendly proportions"
+}
+
+=== SCENE PROMPTS ===
+
+Scene 1
+Rhyme Reference: Clap, clap, little hands, clap in a row
+Duration: 5s
+Visual Prompt: Style anchor: "3d animation cartoon", Cocomelon-like nursery-rhyme look; rounded preschool characters, bright pastel palette, soft daylight GI, clean toy-like textures. User Prompt: create stylized cartoon stylized cartoon children cheerful rhyme that can help then to learn numbers
+Inside a bright playroom, two stylized cartoon toddlers clap rhythmically in sync, sunlight through windows, colorful toys in background, kid-safe props only. Hard visual guardrails: fully stylized 3d animation cartoon render only; not live-action, not photorealistic, not cinematic real-camera footage, not real humans, not real kids, not documentary look. Expand this scene with concrete production details: include explicit foreground/midground/background layout, exact character placement and facial expression beats, shot size + angle + camera movement + lens feel, key/fill/rim lighting cues, material textures, and child-safe props tied directly to the rhyme moment.
+Motion/Action: Hands clap to beat, slight bounce dance.
+Continuity: Keep same kids, clothing colors, and room layout. Keep the same 3d animation cartoon Cocomelon-like look across scenes. Keep characters stylized and not photorealistic.
+
+Scene 2
+Rhyme Reference: Tap, tap, tiny toes, off we go
+Duration: 5s
+Visual Prompt: Style anchor: "3d animation cartoon", Cocomelon-like nursery-rhyme look; rounded preschool characters, bright pastel palette, soft daylight GI, clean toy-like textures. stylized cartoon stylized cartoon children tap toes and march in a circle around a toy car on a soft rug. Hard visual guardrails: fully stylized 3d animation cartoon render only; not live-action, not photorealistic, not cinematic real-camera footage, not real humans, not real kids, not documentary look. Expand this scene with concrete production details: include explicit foreground/midground/background layout, exact character placement and facial expression beats, shot size + angle + camera movement + lens feel, key/fill/rim lighting cues, material textures, and child-safe props tied directly to the rhyme moment.
+Motion/Action: Playful marching and toe taps.
+Continuity: Same playroom and same toy car. Keep the same 3d animation cartoon Cocomelon-like look across scenes. Keep characters stylized and not photorealistic.
+
+Scene 3
+Rhyme Reference: Share your smile, bright and wide
+Duration: 5s
+Visual Prompt: Style anchor: "3d animation cartoon", Cocomelon-like nursery-rhyme look; rounded preschool characters, bright pastel palette, soft daylight GI, clean toy-like textures. Close-up of both stylized cartoon toddlers smiling and nodding kindly to each other. Hard visual guardrails: fully stylized 3d animation cartoon render only; not live-action, not photorealistic, not cinematic real-camera footage, not real humans, not real kids, not documentary look. Expand this scene with concrete production details: include explicit foreground/midground/background layout, exact character placement and facial expression beats, shot size + angle + camera movement + lens feel, key/fill/rim lighting cues, material textures, and child-safe props tied directly to the rhyme moment.
+Motion/Action: Friendly eye contact and hand gesture to share.
+Continuity: Maintain facial style and color palette. Keep the same 3d animation cartoon Cocomelon-like look across scenes. Keep characters stylized and not photorealistic.
+
+Scene 4
+Rhyme Reference: Friends together, side by side
+Duration: 5s
+Visual Prompt: Style anchor: "3d animation cartoon", Cocomelon-like nursery-rhyme look; rounded preschool characters, bright pastel palette, soft daylight GI, clean toy-like textures. both stylized cartoon toddlers sit side by side and roll the toy car gently between them. Hard visual guardrails: fully stylized 3d animation cartoon render only; not live-action, not photorealistic, not cinematic real-camera footage, not real humans, not real kids, not documentary look. Expand this scene with concrete production details: include explicit foreground/midground/background layout, exact character placement and facial expression beats, shot size + angle + camera movement + lens feel, key/fill/rim lighting cues, material textures, and child-safe props tied directly to the rhyme moment.
+Motion/Action: Pass-and-receive toy action with cheerful expressions.
+Continuity: Same costumes, toy car, and bright playroom background. Keep the same 3d animation cartoon Cocomelon-like look across scenes. Keep characters stylized and not photorealistic.
+
+Scene 5
+Rhyme Reference: Zoom goes the toy car, round and round
+Duration: 5s
+Visual Prompt: Style anchor: "3d animation cartoon", Cocomelon-like nursery-rhyme look; rounded preschool characters, bright pastel palette, soft daylight GI, clean toy-like textures. Wide shot of the toy car looping around colorful floor markers in 3D cartoon style. Hard visual guardrails: fully stylized 3d animation cartoon render only; not live-action, not photorealistic, not cinematic real-camera footage, not real humans, not real kids, not documentary look. Expand this scene with concrete production details: include explicit foreground/midground/background layout, exact character placement and facial expression beats, shot size + angle + camera movement + lens feel, key/fill/rim lighting cues, material textures, and child-safe props tied directly to the rhyme moment.
+Motion/Action: Fast toy-car movement, kids clap in rhythm.
+Continuity: Preserve color palette and playful lighting. Keep the same 3d animation cartoon Cocomelon-like look across scenes. Keep characters stylized and not photorealistic.
+
+Scene 6
+Rhyme Reference: Happy giggles are the best sound
+Duration: 5s
+Visual Prompt: Style anchor: "3d animation cartoon", Cocomelon-like nursery-rhyme look; rounded preschool characters, bright pastel palette, soft daylight GI, clean toy-like textures. Medium close-up of both stylized cartoon toddlers laughing while the toy car stops near them. Hard visual guardrails: fully stylized 3d animation cartoon render only; not live-action, not photorealistic, not cinematic real-camera footage, not real humans, not real kids, not documentary look. Expand this scene with concrete production details: include explicit foreground/midground/background layout, exact character placement and facial expression beats, shot size + angle + camera movement + lens feel, key/fill/rim lighting cues, material textures, and child-safe props tied directly to the rhyme moment.
+Motion/Action: Soft bouncing laugh motion and joyful hand gestures.
+Continuity: Keep facial design and lighting continuity. Keep the same 3d animation cartoon Cocomelon-like look across scenes. Keep characters stylized and not photorealistic.
+
+Scene 7
+Rhyme Reference: Take a turn, then let it be
+Duration: 5s
+Visual Prompt: Style anchor: "3d animation cartoon", Cocomelon-like nursery-rhyme look; rounded preschool characters, bright pastel palette, soft daylight GI, clean toy-like textures. One toddler gently rolls the toy car, then pauses and offers it forward with an open-palmed sharing gesture while the second toddler waits patiently and smiles. Hard visual guardrails: fully stylized 3d animation cartoon render only; not live-action, not photorealistic, not cinematic real-camera footage, not real humans, not real kids, not documentary look. Expand this scene with concrete production details: include explicit foreground/midground/background layout, exact character placement and facial expression beats, shot size + angle + camera movement + lens feel, key/fill/rim lighting cues, material textures, and child-safe props tied directly to the rhyme moment.
+Motion/Action: Roll-stop-pass sequence with clear turn-taking beat.
+Continuity: Keep same kids, same toy car, and same room layout; preserve playful lighting and color palette. Keep the same 3d animation cartoon Cocomelon-like look across scenes. Keep characters stylized and not photorealistic.
+
+Scene 8
+Rhyme Reference: Sharing makes it fun for three
+Duration: 5s
+Visual Prompt: Style anchor: "3d animation cartoon", Cocomelon-like nursery-rhyme look; rounded preschool characters, bright pastel palette, soft daylight GI, clean toy-like textures. A third preschool friend enters from the background and joins the circle, all three toddlers smiling as the toy car is passed in turns on the rug. Hard visual guardrails: fully stylized 3d animation cartoon render only; not live-action, not photorealistic, not cinematic real-camera footage, not real humans, not real kids, not documentary look. Expand this scene with concrete production details: include explicit foreground/midground/background layout, exact character placement and facial expression beats, shot size + angle + camera movement + lens feel, key/fill/rim lighting cues, material textures, and child-safe props tied directly to the rhyme moment.
+Motion/Action: Third friend joins, then smooth clockwise pass between three kids.
+Continuity: Keep original two kids and costumes unchanged; add one new friend with matching stylized design language. Keep the same 3d animation cartoon Cocomelon-like look across scenes. Keep characters stylized and not photorealistic.
+
+Scene 9
+Rhyme Reference: Build a tower, one, two, three, Cheer for friends so happily, Play, learn, laugh, in harmony
+Duration: 8s
+Visual Prompt: Style anchor: "3d animation cartoon", Cocomelon-like nursery-rhyme look; rounded preschool characters, bright pastel palette, soft daylight GI, clean toy-like textures. Final celebratory sequence: the three toddlers stack three soft number blocks (1, 2, 3), clap and cheer together, then pose in a joyful group ending frame with the toy car parked beside the tower. Hard visual guardrails: fully stylized 3d animation cartoon render only; not live-action, not photorealistic, not cinematic real-camera footage, not real humans, not real kids, not documentary look. Expand this scene with concrete production details: include explicit foreground/midground/background layout, exact character placement and facial expression beats, shot size + angle + camera movement + lens feel, key/fill/rim lighting cues, material textures, and child-safe props tied directly to the rhyme moment.
+Motion/Action: Stack block 1-2-3, group cheer, then synchronized laugh and wave for closing shot.
+Continuity: Preserve established room, props, and character proportions; conclude with the same bright playful tone for a loop-friendly ending. Keep the same 3d animation cartoon Cocomelon-like look across scenes. Keep characters stylized and not photorealistic.

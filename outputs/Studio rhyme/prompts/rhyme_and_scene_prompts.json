@@ -1,0 +1,73 @@
+{
+  "title": "Studio rhyme",
+  "rhyme": "Ek chhota sa beej maine boya,\nDharti maa ki god mein soya.\nSuraj ki kiran ne aakar jagaya,\nBarish ki boondon ne pani pilaya.\nDheere dheere nikla ek hara patta,\nBadhne laga phir woh paudha achha.\nPhool khile hain sundar pyare,\nKhushiyan baantein saare jag saare.\nMilan hai ye kudrat ka pyaara.",
+  "rhyme_music_style_prompt": "",
+  "visual_style_guide": {
+    "style": "3D Pixar animation style with Cocomelon-like nursery rhyme aesthetics, featuring soft rounded shapes, vibrant colors, and high-quality subsurface scattering for skin and plant textures.",
+    "characters": [
+      "A cute 5-year-old boy named Aarav wearing a bright blue denim overall with a yellow t-shirt, messy brown hair, and big expressive eyes.",
+      "A friendly, anthropomorphic sun with a gentle smile and soft golden rays."
+    ],
+    "palette": "Bright sunny yellow, lush meadow green, sky blue, and vibrant floral pinks and purples.",
+    "camera_language": "Playful, steady, eye-level shots with smooth pans and gentle zooms to keep children engaged.",
+    "render_notes": "Clean topology, soft global illumination, warm sunlight, and high-saturation textures for a cheerful, polished look."
+  },
+  "scene_prompts": [
+    {
+      "scene_number": 1,
+      "rhyme_line_reference": "Ek chhota sa beej maine boya, Dharti maa ki god mein soya.",
+      "duration_seconds": 4,
+      "visual_prompt": "Style anchor: \"3d animation cartoon\", Cocomelon-like nursery-rhyme look; rounded preschool characters, bright pastel palette, soft daylight GI, clean toy-like textures. 3D Pixar animation style showing a close-up of a small, cheerful stylized cartoon toddler boy named Aarav kneeling in a lush, sunny garden. He is carefully pressing a small brown seed into a mound of rich, dark, fertile soil. The environment features soft, rounded hills, blooming wildflowers in the background, and a bright, clear blue sky. The lighting is warm and golden, casting soft shadows. The soil has a tactile, crumbly texture. The camera is at a low angle to emphasize the importance of the tiny seed. The overall mood is nurturing, peaceful, and whimsical, typical of high-end nursery rhyme cartoons. Hard visual guardrails: fully stylized 3d animation cartoon render only; not live-action, not photorealistic, not cinematic real-camera footage, not real humans, not real kids, not documentary look.",
+      "motion_and_action": "Aarav smiles warmly, carefully uses his finger to push the seed down, and then pats the dirt gently with both hands.",
+      "continuity_notes": "Aarav’s blue denim overalls, yellow t-shirt, and the specific location of the garden plot must remain consistent. Keep the same 3d animation cartoon Cocomelon-like look across scenes. Keep characters stylized and not photorealistic."
+    },
+    {
+      "scene_number": 2,
+      "rhyme_line_reference": "Suraj ki kiran ne aakar jagaya,",
+      "duration_seconds": 4,
+      "visual_prompt": "Style anchor: \"3d animation cartoon\", Cocomelon-like nursery-rhyme look; rounded preschool characters, bright pastel palette, soft daylight GI, clean toy-like textures. 3D Pixar animation style showing a friendly, stylized yellow sun with a cute face peering over a soft, green hill. A warm, glowing golden beam of light travels from the sun directly down to the spot where the seed was planted. The light sparkles with magical, dust-like particles. The scene is bright and cheerful, with vibrant green grass swaying gently. The camera performs a slow, smooth zoom onto the soil patch. The textures are clean and smooth, emphasizing the friendly, approachable aesthetic. The lighting is bright and high-key, creating a joyful, inviting atmosphere for young viewers. Hard visual guardrails: fully stylized 3d animation cartoon render only; not live-action, not photorealistic, not cinematic real-camera footage, not real humans, not real kids, not documentary look.",
+      "motion_and_action": "The sun winks at the camera, and the golden light beam pulses softly as it touches the ground.",
+      "continuity_notes": "The sun’s design and the specific garden patch must match the previous scene. Keep the same 3d animation cartoon Cocomelon-like look across scenes. Keep characters stylized and not photorealistic."
+    },
+    {
+      "scene_number": 3,
+      "rhyme_line_reference": "Barish ki boondon ne pani pilaya.",
+      "duration_seconds": 4,
+      "visual_prompt": "Style anchor: \"3d animation cartoon\", Cocomelon-like nursery-rhyme look; rounded preschool characters, bright pastel palette, soft daylight GI, clean toy-like textures. 3D Pixar animation style featuring a gentle, localized rain shower over the garden patch. The raindrops are large, glossy, and cartoonish, sparkling like diamonds as they fall. The ground becomes a rich, moist brown where the water lands. Aarav is standing to the side, looking at the rain with a happy, surprised expression, holding a colorful tiny umbrella. The background remains sunny, creating a beautiful 'sunshower' effect with a faint, colorful rainbow arching across the sky. The lighting is soft and diffused, highlighting the wet, glistening surfaces of the leaves and soil. Hard visual guardrails: fully stylized 3d animation cartoon render only; not live-action, not photorealistic, not cinematic real-camera footage, not real humans, not real kids, not documentary look.",
+      "motion_and_action": "Raindrops fall in a rhythmic pattern, and Aarav twirls his colorful umbrella happily.",
+      "continuity_notes": "Aarav’s clothing and the garden environment stay consistent. Keep the same 3d animation cartoon Cocomelon-like look across scenes. Keep characters stylized and not photorealistic."
+    },
+    {
+      "scene_number": 4,
+      "rhyme_line_reference": "Dheere dheere nikla ek hara patta,",
+      "duration_seconds": 4,
+      "visual_prompt": "Style anchor: \"3d animation cartoon\", Cocomelon-like nursery-rhyme look; rounded preschool characters, bright pastel palette, soft daylight GI, clean toy-like textures. 3D Pixar animation style close-up shot of the soil surface. A tiny, vibrant green sprout pushes its way up through the earth. The leaf is bright lime green, soft, and slightly translucent when the sunlight hits it. The surrounding soil is textured with small pebbles and organic bits. The camera is at macro level, capturing the delicate growth of the sprout. The depth of field is shallow, keeping the focus entirely on the new plant. The lighting is soft, warm, and inviting, creating a sense of wonder and new life. The colors are highly saturated and appealing. Hard visual guardrails: fully stylized 3d animation cartoon render only; not live-action, not photorealistic, not cinematic real-camera footage, not real humans, not real kids, not documentary look.",
+      "motion_and_action": "The sprout wiggles slightly as it emerges from the soil, unfurling its first tiny leaf.",
+      "continuity_notes": "The exact spot where the seed was planted in scene 1. Keep the same 3d animation cartoon Cocomelon-like look across scenes. Keep characters stylized and not photorealistic."
+    },
+    {
+      "scene_number": 5,
+      "rhyme_line_reference": "Badhne laga phir woh paudha achha.",
+      "duration_seconds": 4,
+      "visual_prompt": "Style anchor: \"3d animation cartoon\", Cocomelon-like nursery-rhyme look; rounded preschool characters, bright pastel palette, soft daylight GI, clean toy-like textures. 3D Pixar animation style showing a time-lapse effect where the sprout quickly grows into a sturdy, healthy green plant with multiple leaves. The plant is stylized with round, friendly edges. Aarav is kneeling beside it, watching with wide, amazed, and happy eyes. The garden background is now filled with more colorful flowers that seem to bloom in rhythm with the plant's growth. The lighting is bright and sunny, and the overall color palette is a mix of lush greens, bright yellows, and soft blues. The scene is filled with a sense of accomplishment and joy. Hard visual guardrails: fully stylized 3d animation cartoon render only; not live-action, not photorealistic, not cinematic real-camera footage, not real humans, not real kids, not documentary look.",
+      "motion_and_action": "The plant grows taller and wider, and Aarav leans in, clapping his hands in excitement.",
+      "continuity_notes": "Aarav’s reactions and the growth progression of the plant. Keep the same 3d animation cartoon Cocomelon-like look across scenes. Keep characters stylized and not photorealistic."
+    },
+    {
+      "scene_number": 6,
+      "rhyme_line_reference": "Phool khile hain sundar pyare, Khushiyan baantein saare jag saare.",
+      "duration_seconds": 4,
+      "visual_prompt": "Style anchor: \"3d animation cartoon\", Cocomelon-like nursery-rhyme look; rounded preschool characters, bright pastel palette, soft daylight GI, clean toy-like textures. 3D Pixar animation style showing the plant fully grown with several large, beautiful, colorful flowers blooming at once. The flowers are bright pink, orange, and purple, with soft, velvety textures. Tiny, cute cartoon butterflies flutter around the flowers. Aarav is now standing, laughing, and spreading his arms wide to share the beauty of the garden. The background is filled with a soft-focus meadow, creating a dreamy and magical environment. The lighting is golden hour, casting a warm, magical glow over everything. The scene feels celebratory and full of life. Hard visual guardrails: fully stylized 3d animation cartoon render only; not live-action, not photorealistic, not cinematic real-camera footage, not real humans, not real kids, not documentary look.",
+      "motion_and_action": "Flowers pop open with a soft 'ding' sound effect, and butterflies orbit the plants.",
+      "continuity_notes": "Aarav’s joyful expression and the specific colors of the flowers. Keep the same 3d animation cartoon Cocomelon-like look across scenes. Keep characters stylized and not photorealistic."
+    },
+    {
+      "scene_number": 7,
+      "rhyme_line_reference": "Milan hai ye kudrat ka pyaara.",
+      "duration_seconds": 4,
+      "visual_prompt": "Style anchor: \"3d animation cartoon\", Cocomelon-like nursery-rhyme look; rounded preschool characters, bright pastel palette, soft daylight GI, clean toy-like textures. 3D Pixar animation style wide shot of the entire garden. Aarav is sitting on the grass, surrounded by his beautiful flowers, with the sun smiling down from above. The scene captures the harmony between the stylized cartoon toddler boy, the plants, and the sun. The composition is balanced and symmetrical. A gentle breeze makes the flowers and grass sway in unison. The colors are vibrant and harmonious, creating a perfect, happy ending. The render quality is high, with soft, pleasing textures on everything from the grass to Aarav’s clothes. The scene radiates warmth, love, and a deep appreciation for nature. Hard visual guardrails: fully stylized 3d animation cartoon render only; not live-action, not photorealistic, not cinematic real-camera footage, not real humans, not real kids, not documentary look.",
+      "motion_and_action": "Aarav waves at the camera while the sun shines brighter, creating a lens flare effect that fills the screen with warmth.",
+      "continuity_notes": "All elements from previous scenes must be visible in the final garden landscape. Keep the same 3d animation cartoon Cocomelon-like look across scenes. Keep characters stylized and not photorealistic."
+    }
+  ]
+}

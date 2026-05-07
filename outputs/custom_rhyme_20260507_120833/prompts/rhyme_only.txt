@@ -1,0 +1,18 @@
+Title: custom_rhyme_20260507_120833
+
+=== RHYME ===
+One little number jumps up high,
+Two little numbers wave hello,
+Three little numbers in a row,
+Four little numbers tap their toes,
+Five little numbers touch their nose,
+Six little numbers spin around,
+Seven little numbers clap to sound,
+Eight little numbers smile so bright,
+Nine little numbers say good night!
+
+=== RHYME STYLE ===
+Simple AABB-style lines, upbeat and educational, ages 3–7.
+
+=== RHYME MUSIC STYLE PROMPT ===
+User Prompt: uyfghjnm. Create cheerful, child-safe instrumental nursery music for 60 seconds, with a soft, gentle intro (do not make the beginning too heavy), gentle percussion, playful marimba and ukulele textures, bright major-key harmony, steady 120 BPM groove, no heavy drops, smooth ending.

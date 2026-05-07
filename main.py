@@ -81,7 +81,7 @@ async def run_pipeline(video_id: str | None = None):
         )
         log.info("Structured JSON saved to %s", output_path)
         log.warning("No shorts found - pipeline finished with empty report.")
-        return
+        return output_path
 
     log.info("Processing %d shorts...", len(shorts))
 
@@ -104,6 +104,7 @@ async def run_pipeline(video_id: str | None = None):
     log.info("Structured JSON saved to %s", output_path)
 
     log.info("Pipeline complete. Processed %d shorts.", len(processed))
+    return output_path
 
 
 def _parse_and_filter(raw_shorts: list) -> list:
@@ -180,8 +181,10 @@ def _save_pipeline_output(
             "days_back": Config.DAYS_BACK,
             "max_duration_seconds": Config.MAX_DURATION_SECONDS,
             "top_n": Config.TOP_N,
-            "openai_model": Config.OPENAI_MODEL,
-            "openai_vision_model": Config.OPENAI_VISION_MODEL,
+            "analysis_provider": "gemini",
+            "gemini_video_analysis_model": (
+                Config.GEMINI_VIDEO_ANALYSIS_MODEL or Config.GEMINI_TEXT_MODEL
+            ),
         },
         "counts": {
             "raw_shorts": len(raw_shorts),

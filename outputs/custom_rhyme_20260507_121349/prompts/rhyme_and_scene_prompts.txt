@@ -1,0 +1,57 @@
+Title: custom_rhyme_20260507_121349
+
+=== RHYME ===
+One little number jumps up high,
+Two little numbers wave hello,
+Three little numbers in a row,
+Four little numbers tap their toes,
+Five little numbers touch their nose,
+Six little numbers spin around,
+Seven little numbers clap to sound,
+Eight little numbers smile so bright,
+Nine little numbers say good night!
+
+=== RHYME MUSIC STYLE PROMPT ===
+User Prompt: generate a rhyme for kids that can help them to learn numbers. Create cheerful, child-safe instrumental nursery music for 60 seconds, with a soft, gentle intro (do not make the beginning too heavy), gentle percussion, playful marimba and ukulele textures, bright major-key harmony, steady 120 BPM groove, no heavy drops, smooth ending.
+
+=== VISUAL STYLE GUIDE ===
+{
+  "style": "Cocomelon-like 3D cartoon animation, rounded forms, soft global illumination, bright pastel nursery palette",
+  "characters": [
+    "two preschool kids",
+    "a smiling toy car"
+  ],
+  "palette": "sky blue, sunny yellow, candy pink, leaf green",
+  "camera_language": "gentle dolly moves, medium and close shots, playful pacing",
+  "render_notes": "clean toy-like materials, smooth shading, soft shadows, kid-friendly proportions"
+}
+
+=== SCENE PROMPTS ===
+
+Scene 1
+Rhyme Reference: line 1
+Duration: 7s
+Visual Prompt: Visual style: 3D Pixar animation. Style anchor: "3d animation cartoon", Cocomelon-like nursery-rhyme look; rounded preschool characters, bright pastel palette, soft daylight GI, clean toy-like textures. Preschool playroom scene with joyful number-learning action. Hard visual guardrails: fully stylized 3d animation cartoon render only; not live-action, not photorealistic, not cinematic real-camera footage, not real humans, not real kids, not documentary look. Expand this scene with concrete production details: include explicit foreground/midground/background layout, exact character placement and facial expression beats, shot size + angle + camera movement + lens feel, key/fill/rim lighting cues, material textures, and child-safe props tied directly to the rhyme moment.
+Motion/Action: Simple rhythmic movements matching rhyme beat.
+Continuity: Keep same characters, outfits, props, and color palette. Keep the same 3d animation cartoon Cocomelon-like look across scenes. Keep characters stylized and not photorealistic.
+
+Scene 2
+Rhyme Reference: line 2
+Duration: 7s
+Visual Prompt: Visual style: 3D Pixar animation. Style anchor: "3d animation cartoon", Cocomelon-like nursery-rhyme look; rounded preschool characters, bright pastel palette, soft daylight GI, clean toy-like textures. Preschool playroom scene with joyful number-learning action. Hard visual guardrails: fully stylized 3d animation cartoon render only; not live-action, not photorealistic, not cinematic real-camera footage, not real humans, not real kids, not documentary look. Expand this scene with concrete production details: include explicit foreground/midground/background layout, exact character placement and facial expression beats, shot size + angle + camera movement + lens feel, key/fill/rim lighting cues, material textures, and child-safe props tied directly to the rhyme moment.
+Motion/Action: Simple rhythmic movements matching rhyme beat.
+Continuity: Keep same characters, outfits, props, and color palette. Keep the same 3d animation cartoon Cocomelon-like look across scenes. Keep characters stylized and not photorealistic.
+
+Scene 3
+Rhyme Reference: line 3
+Duration: 7s
+Visual Prompt: Visual style: 3D Pixar animation. Style anchor: "3d animation cartoon", Cocomelon-like nursery-rhyme look; rounded preschool characters, bright pastel palette, soft daylight GI, clean toy-like textures. Preschool playroom scene with joyful number-learning action. Hard visual guardrails: fully stylized 3d animation cartoon render only; not live-action, not photorealistic, not cinematic real-camera footage, not real humans, not real kids, not documentary look. Expand this scene with concrete production details: include explicit foreground/midground/background layout, exact character placement and facial expression beats, shot size + angle + camera movement + lens feel, key/fill/rim lighting cues, material textures, and child-safe props tied directly to the rhyme moment.
+Motion/Action: Simple rhythmic movements matching rhyme beat.
+Continuity: Keep same characters, outfits, props, and color palette. Keep the same 3d animation cartoon Cocomelon-like look across scenes. Keep characters stylized and not photorealistic.
+
+Scene 4
+Rhyme Reference: line 4
+Duration: 7s
+Visual Prompt: Visual style: 3D Pixar animation. Style anchor: "3d animation cartoon", Cocomelon-like nursery-rhyme look; rounded preschool characters, bright pastel palette, soft daylight GI, clean toy-like textures. Preschool playroom scene with joyful number-learning action. Hard visual guardrails: fully stylized 3d animation cartoon render only; not live-action, not photorealistic, not cinematic real-camera footage, not real humans, not real kids, not documentary look. Expand this scene with concrete production details: include explicit foreground/midground/background layout, exact character placement and facial expression beats, shot size + angle + camera movement + lens feel, key/fill/rim lighting cues, material textures, and child-safe props tied directly to the rhyme moment.
+Motion/Action: Simple rhythmic movements matching rhyme beat.
+Continuity: Keep same characters, outfits, props, and color palette. Keep the same 3d animation cartoon Cocomelon-like look across scenes. Keep characters stylized and not photorealistic.

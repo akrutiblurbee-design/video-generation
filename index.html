@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blurbee Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue: #2a6fd4;
+    --blue-dark: #1a4fa0;
+    --blue-mid: #4a8de8;
+    --blue-light: #c8ddf8;
+    --blue-xlight: #e8f1fd;
+    --blue-pale: #f2f6fe;
+    --offwhite: #f7f5f0;
+    --offwhite2: #ede9e0;
+    --cream: #faf8f4;
+    --text: #1a1a2e;
+    --text-mid: #3d3d5c;
+    --text-muted: #7a7a9a;
+    --border: #dde4f0;
+    --border-blue: #b8cef0;
+    --white: #ffffff;
+    --radius: 16px;
+    --radius-sm: 10px;
+  }
+
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    background: var(--offwhite);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  header {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2.5rem;
+    height: 66px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+  }
+
+  .logo-img {
+    width: 49px;
+    height: 49px;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 1px solid var(--border-blue);
+  }
+
+  .logo-text {
+    font-family: 'DM Serif Display', serif;
+    font-size: 30px;
+    color: var(--blue-dark);
+    letter-spacing: -0.3px;
+  }
+
+  .badge-beta {
+    font-size: 10px;
+    font-weight: 500;
+    background: var(--blue-xlight);
+    color: var(--blue);
+    padding: 2px 9px;
+    border-radius: 20px;
+    border: 1px solid var(--blue-light);
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+
+  .status-dot {
+    width: 7px;
+    height: 7px;
+    background: #4caf82;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.35; }
+  }
+
+  main {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+  }
+
+  .page-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 32px;
+    color: var(--blue-dark);
+    letter-spacing: -0.5px;
+    margin-bottom: 5px;
+  }
+
+  .page-sub {
+    font-size: 14px;
+    color: var(--text-muted);
+    font-weight: 400;
+    margin-bottom: 2.2rem;
+  }
+
+  /* Progress */
+  .progress-bar {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 2.5rem;
+  }
+
+  .prog-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    position: relative;
+  }
+
+  .prog-step::after {
+    content: '';
+    position: absolute;
+    top: 13px;
+    left: 50%;
+    width: 100%;
+    height: 1.5px;
+    background: var(--border);
+    z-index: 0;
+  }
+
+  .prog-step:last-child::after { display: none; }
+
+  .prog-dot {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border);
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-muted);
+    z-index: 1;
+    position: relative;
+    transition: all 0.3s;
+  }
+
+  .prog-dot.done { background: var(--blue); border-color: var(--blue); color: white; }
+  .prog-dot.active { background: var(--blue); border-color: var(--blue); color: white; box-shadow: 0 0 0 4px var(--blue-xlight); }
+
+  .prog-label {
+    font-size: 10px;
+    color: var(--text-muted);
+    margin-top: 6px;
+    text-align: center;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+  }
+
+  .pipeline { display: flex; flex-direction: column; gap: 14px; }
+
+  /* Step cards */
+  .step-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+
+  .step-card:hover { border-color: var(--border-blue); }
+
+  .step-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 22px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .step-num {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    flex-shrink: 0;
+    background: var(--blue-pale);
+    color: var(--blue);
+    border: 1px solid var(--blue-light);
+  }
+
+  .step-title h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 2px;
+    letter-spacing: -0.2px;
+  }
+
+  .step-title p {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+
+  .step-title { flex: 1; }
+
+  .step-tag {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 11px;
+    border-radius: 20px;
+    background: var(--blue-pale);
+    color: var(--blue);
+    border: 1px solid var(--blue-light);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .step-chevron { color: var(--text-muted); font-size: 17px; transition: transform 0.2s; }
+  .step-chevron.open { transform: rotate(180deg); }
+
+  .step-body { padding: 0 22px 22px; display: none; }
+  .step-body.open { display: block; }
+
+  .divider { height: 1px; background: var(--border); margin: 0 22px 18px; }
+
+  /* Form */
+  label {
+    display: block;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 6px;
+  }
+
+  input[type="text"], textarea {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--blue-pale);
+    color: var(--text);
+    outline: none;
+    transition: border 0.15s, background 0.15s;
+    font-family: 'DM Sans', sans-serif;
+    resize: vertical;
+  }
+
+  input[type="text"]:focus, textarea:focus {
+    border-color: var(--blue);
+    background: var(--white);
+    box-shadow: 0 0 0 3px rgba(42,111,212,0.1);
+  }
+
+  textarea { min-height: 78px; }
+
+  .input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+  .input-group { margin-bottom: 14px; }
+
+  .or-divider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 4px 0 14px;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  .or-divider::before, .or-divider::after {
+    content: ''; flex: 1; height: 1px; background: var(--border);
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 10px 18px;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    border: none;
+    transition: all 0.15s;
+    font-family: 'DM Sans', sans-serif;
+    letter-spacing: 0.1px;
+  }
+
+  .btn-primary {
+    background: var(--blue);
+    color: white;
+  }
+
+  .btn-primary:hover { background: var(--blue-dark); transform: translateY(-1px); }
+
+  .btn-outline {
+    background: var(--white);
+    color: var(--blue);
+    border: 1px solid var(--border-blue);
+  }
+
+  .btn-outline:hover { background: var(--blue-pale); }
+  .btn:active { transform: scale(0.98) !important; }
+
+  .btn-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
+
+  /* Output */
+  .output-box {
+    background: var(--blue-pale);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 14px;
+    font-size: 13.5px;
+    color: var(--text-muted);
+    min-height: 80px;
+    line-height: 1.65;
+    margin-top: 14px;
+    display: none;
+    white-space: pre-wrap;
+  }
+
+  .output-box.visible { display: block; }
+  .output-box.has-content { color: var(--text-mid); background: var(--white); border-color: var(--border-blue); }
+
+  .output-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  .output-title {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .copy-btn {
+    font-size: 11px;
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 3px 9px;
+    color: var(--text-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.15s;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .copy-btn:hover { background: var(--blue-pale); color: var(--blue); border-color: var(--border-blue); }
+
+  /* Scenes */
+  .scenes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+
+  .scene-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 13px;
+    transition: border-color 0.15s;
+  }
+
+  .scene-card:hover { border-color: var(--border-blue); }
+
+  .scene-card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; }
+  .scene-card-header { justify-content: space-between; }
+  .scene-card-title-wrap { display: flex; align-items: center; gap: 8px; min-width: 0; }
+
+  .scene-num-badge {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 9px;
+    border-radius: 20px;
+    background: var(--blue-pale);
+    color: var(--blue);
+    border: 1px solid var(--blue-light);
+    flex-shrink: 0;
+  }
+
+  .scene-title { font-size: 13px; font-weight: 600; color: var(--text); }
+  .scene-desc { font-size: 12px; color: var(--text-muted); line-height: 1.55; font-weight: 400; }
+
+  /* Upload */
+  .upload-area {
+    border: 1.5px dashed var(--border-blue);
+    border-radius: var(--radius-sm);
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.15s;
+    position: relative;
+    background: var(--blue-pale);
+  }
+
+  .upload-area:hover { border-color: var(--blue); background: var(--blue-xlight); }
+
+  .upload-area input[type="file"] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+  }
+
+  .upload-icon { font-size: 26px; color: var(--blue-mid); margin-bottom: 5px; }
+  .upload-text { font-size: 13px; color: var(--text-mid); font-weight: 500; }
+  .upload-hint { font-size: 11px; color: var(--text-muted); margin-top: 3px; }
+  .upload-name { font-size: 12px; color: var(--blue); font-weight: 500; margin-top: 5px; }
+
+  /* Spinner */
+  .spinner {
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    border: 2px solid rgba(255,255,255,0.35);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.65s linear infinite;
+    flex-shrink: 0;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    border: 1px solid var(--border-blue);
+    background: var(--blue-pale);
+    color: var(--blue);
+    margin-top: 10px;
+    transition: all 0.15s;
+    font-family: 'DM Sans', sans-serif;
+    text-decoration: none;
+  }
+
+  .download-btn:hover { background: var(--blue-xlight); border-color: var(--blue); }
+
+  .info-callout {
+    background: var(--blue-pale);
+    border: 1px solid var(--blue-light);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    font-size: 12.5px;
+    color: var(--blue-dark);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 14px;
+    font-weight: 400;
+  }
+
+  .connector { display: flex; align-items: center; justify-content: center; height: 20px; color: var(--border-blue); font-size: 17px; }
+
+  #toast {
+    position: fixed;
+    bottom: 26px;
+    right: 26px;
+    background: var(--text);
+    color: white;
+    padding: 10px 18px;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    display: none;
+    z-index: 999;
+    font-family: 'DM Sans', sans-serif;
+    animation: slideup 0.2s ease;
+  }
+
+  @keyframes slideup {
+    from { transform: translateY(8px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  /* Media player */
+  .media-card {
+    background: var(--blue-pale);
+    border: 1px solid var(--border-blue);
+    border-radius: var(--radius-sm);
+    padding: 16px;
+    margin-top: 14px;
+  }
+
+  .media-card-header {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    margin-bottom: 12px;
+  }
+
+  .media-icon-circle {
+    width: 40px;
+    height: 40px;
+    background: var(--blue);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .media-filename { font-weight: 600; font-size: 14px; color: var(--text); }
+  .media-meta { font-size: 12px; color: var(--text-muted); margin-top: 1px; }
+
+  audio, video {
+    width: 100%;
+    border-radius: var(--radius-sm);
+    margin-bottom: 8px;
+    accent-color: var(--blue);
+  }
+
+  /* Global readability boost (keep logo text unchanged) */
+  :root { --ui-font-scale: 1.14; }
+
+  .header-right { font-size: calc(13px * var(--ui-font-scale)); }
+  .page-title { font-size: calc(32px * var(--ui-font-scale)); }
+  .page-sub { font-size: calc(14px * var(--ui-font-scale)); }
+  .badge-beta { font-size: calc(10px * var(--ui-font-scale)); }
+  .prog-dot { font-size: calc(11px * var(--ui-font-scale)); }
+  .prog-label { font-size: calc(10px * var(--ui-font-scale)); }
+  .step-num { font-size: calc(12px * var(--ui-font-scale)); }
+  .step-title h3 { font-size: calc(15px * var(--ui-font-scale)); }
+  .step-title p { font-size: calc(12px * var(--ui-font-scale)); }
+  .step-tag { font-size: calc(11px * var(--ui-font-scale)); }
+  label { font-size: calc(11.5px * var(--ui-font-scale)); }
+  input[type="text"], textarea { font-size: calc(14px * var(--ui-font-scale)); }
+  .or-divider { font-size: calc(12px * var(--ui-font-scale)); }
+  .btn { font-size: calc(13px * var(--ui-font-scale)); }
+  .output-box { font-size: calc(13.5px * var(--ui-font-scale)); }
+  .output-title { font-size: calc(11px * var(--ui-font-scale)); }
+  .copy-btn { font-size: calc(11px * var(--ui-font-scale)); }
+  .scene-num-badge { font-size: calc(10px * var(--ui-font-scale)); }
+  .scene-title { font-size: calc(13px * var(--ui-font-scale)); }
+  .scene-desc { font-size: calc(12px * var(--ui-font-scale)); }
+  .upload-text { font-size: calc(13px * var(--ui-font-scale)); }
+  .upload-hint { font-size: calc(11px * var(--ui-font-scale)); }
+  .upload-name { font-size: calc(12px * var(--ui-font-scale)); }
+  .download-btn { font-size: calc(13px * var(--ui-font-scale)); }
+  .info-callout { font-size: calc(12.5px * var(--ui-font-scale)); }
+  #toast { font-size: calc(13px * var(--ui-font-scale)); }
+  .media-filename { font-size: calc(14px * var(--ui-font-scale)); }
+  .media-meta { font-size: calc(12px * var(--ui-font-scale)); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="image.png" class="logo-img" alt="Blurbee logo">
+    <span class="logo-text">Blurbee Studio</span>
+    
+  </div>
+  <div class="header-right">
+    
+    
+
+  </div>
+</header>
+
+<main>
+  <p class="page-title">AI Video Generation</p>
+  <p class="page-sub">Generate nursery rhyme videos in 4 simple steps — from idea to final video.</p>
+
+  <!-- Progress -->
+  <div class="progress-bar">
+    <div class="prog-step"><div class="prog-dot active" id="pd1">1</div><div class="prog-label">Input</div></div>
+    <div class="prog-step"><div class="prog-dot" id="pd2">2</div><div class="prog-label">Scenes</div></div>
+    <div class="prog-step"><div class="prog-dot" id="pd3">3</div><div class="prog-label">Music</div></div>
+    <div class="prog-step"><div class="prog-dot" id="pd4">4</div><div class="prog-label">Replace Audio</div></div>
+  </div>
+
+  <div class="pipeline">
+
+    <!-- STEP 1 -->
+    <div class="step-card" id="card1">
+      <div class="step-header" onclick="toggleCard(1)">
+        <div class="step-num">1</div>
+        <div class="step-title">
+          <h3>Input & Rhyme Generator</h3>
+          <p>Enter a YouTube video ID or a custom prompt to generate rhyme content</p>
+        </div>
+        <span class="step-tag"><i class="ti ti-wand" aria-hidden="true"></i> Generate</span>
+        <i class="ti ti-chevron-down step-chevron open" id="chev1"></i>
+      </div>
+      <div class="divider"></div>
+      <div class="step-body open" id="body1">
+        <div class="info-callout">
+          <i class="ti ti-info-circle" style="font-size:15px;flex-shrink:0;margin-top:1px;" aria-hidden="true"></i>
+          Enter a YouTube Video ID (runs the full pipeline), or use Theme / Custom Prompt — combine them however you like.
+        </div>
+        <div class="input-row">
+          <div>
+            <label>YouTube Video ID</label>
+            <input type="text" id="videoId" placeholder="e.g. dQw4w9WgXcQ" />
+          </div>
+          <div>
+            <label>Theme / Mood</label>
+            <input type="text" id="theme" placeholder="e.g. bedtime, jungle, ocean" />
+          </div>
+        </div>
+        <div class="or-divider">or describe your idea</div>
+        <div class="input-group">
+          <label>Custom Prompt</label>
+          <textarea id="userPrompt" placeholder="e.g. A rhyme about a little bunny who can't sleep and counts stars to drift off..."></textarea>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="generateRhyme()" id="btn1">
+            <i class="ti ti-sparkles" aria-hidden="true"></i> Process & Generate Rhyme
+          </button>
+          <button class="btn btn-outline" onclick="clearStep1()">
+            <i class="ti ti-refresh" aria-hidden="true"></i> Clear
+          </button>
+        </div>
+        <div class="output-box" id="rhymeOut">
+          <div class="output-label">
+            <span class="output-title"><i class="ti ti-book" aria-hidden="true"></i> Rhyme Description</span>
+            <button class="copy-btn" onclick="copyText('rhymeOut')"><i class="ti ti-copy" aria-hidden="true"></i> Copy</button>
+          </div>
+          <div id="rhymeText"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector"><i class="ti ti-arrow-down" aria-hidden="true"></i></div>
+
+    <!-- STEP 2 -->
+    <div class="step-card" id="card2">
+      <div class="step-header" onclick="toggleCard(2)">
+        <div class="step-num">2</div>
+        <div class="step-title">
+          <h3>Scene Prompt Generator</h3>
+          <p>Generate detailed shot-by-shot video prompts from the rhyme</p>
+        </div>
+        <span class="step-tag"><i class="ti ti-movie" aria-hidden="true"></i> Prompts</span>
+        <i class="ti ti-chevron-down step-chevron" id="chev2"></i>
+      </div>
+      <div class="divider"></div>
+      <div class="step-body" id="body2">
+        <div class="input-group">
+          <label>Rhyme Description (auto-filled from Step 1)</label>
+          <textarea id="rhymeInput2" placeholder="Rhyme description will appear here after Step 1, or paste manually..."></textarea>
+        </div>
+        <div class="input-row">
+          <div>
+            <label>Number of Scenes</label>
+            <input type="text" id="sceneCount" value="6" />
+          </div>
+          <div>
+            <label>Video Style</label>
+            <input type="text" id="videoStyle" value="3D Pixar animation" />
+          </div>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-outline" onclick="enhanceScenePrompt()" id="btn2Enhance">
+            <i class="ti ti-magic-stick" aria-hidden="true"></i> Enhance Prompt
+          </button>
+          <button class="btn btn-primary" onclick="generateScenes()" id="btn2">
+            <i class="ti ti-layout-grid" aria-hidden="true"></i> Generate Scene Prompts
+          </button>
+        </div>
+        <div id="scenesOut" style="display:none; margin-top:14px;">
+          <div class="output-label">
+            <span class="output-title"><i class="ti ti-movie" aria-hidden="true"></i> Scene Breakdown</span>
+            <button class="copy-btn" onclick="copyScenes()"><i class="ti ti-copy" aria-hidden="true"></i> Copy All</button>
+          </div>
+          <div class="scenes-grid" id="scenesGrid"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector"><i class="ti ti-arrow-down" aria-hidden="true"></i></div>
+
+    <!-- STEP 3 -->
+    <div class="step-card" id="card3">
+      <div class="step-header" onclick="toggleCard(3)">
+        <div class="step-num">3</div>
+        <div class="step-title">
+          <h3>Rhyme Music Generator</h3>
+          <p>Generate a custom nursery rhyme audio track from the rhyme description</p>
+        </div>
+        <span class="step-tag"><i class="ti ti-music" aria-hidden="true"></i> Music</span>
+        <i class="ti ti-chevron-down step-chevron" id="chev3"></i>
+      </div>
+      <div class="divider"></div>
+      <div class="step-body" id="body3">
+        <div class="input-group">
+          <label>Rhyme Description (auto-filled from Step 1)</label>
+          <textarea id="rhymeInput3" placeholder="Rhyme description will appear here after Step 1, or paste manually..."></textarea>
+        </div>
+        <div class="input-row">
+          <div>
+            <label>Music Style</label>
+            <input type="text" id="musicStyle" value="soft lullaby, gentle piano" />
+          </div>
+          <div>
+            <label>Duration (seconds)</label>
+            <input type="text" id="duration" value="60" />
+          </div>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="generateMusic()" id="btn3">
+            <i class="ti ti-music" aria-hidden="true"></i> Generate Music
+          </button>
+        </div>
+        <div id="musicOut" style="display:none;">
+          <div class="media-card">
+            <div class="media-card-header">
+              <div class="media-icon-circle"><i class="ti ti-music" style="color:white;font-size:18px;" aria-hidden="true"></i></div>
+              <div>
+                <div class="media-filename" id="musicTitle">rhyme_track.mp3</div>
+                <div class="media-meta" id="musicMeta">Generated · 60s</div>
+              </div>
+            </div>
+            <audio controls id="audioPlayer"><source src="" type="audio/mpeg"></audio>
+            <button class="download-btn" id="musicDownload" type="button" onclick="downloadGeneratedMusic()">
+              <i class="ti ti-download" aria-hidden="true"></i> Download Audio
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector"><i class="ti ti-arrow-down" aria-hidden="true"></i></div>
+
+    <!-- STEP 4 -->
+    <div class="step-card" id="card4">
+      <div class="step-header" onclick="toggleCard(4)">
+        <div class="step-num">4</div>
+        <div class="step-title">
+          <h3>Replace Video Audio</h3>
+          <p>Swap the audio track of your video with the generated music</p>
+        </div>
+        <span class="step-tag"><i class="ti ti-video" aria-hidden="true"></i> Merge</span>
+        <i class="ti ti-chevron-down step-chevron" id="chev4"></i>
+      </div>
+      <div class="divider"></div>
+      <div class="step-body" id="body4">
+        <div class="input-row">
+          <div>
+            <label>Video File</label>
+            <div class="upload-area" id="videoUpload">
+              <input type="file" accept="video/*" onchange="handleFileUpload(this,'videoUpload','videoFileName')" />
+              <div class="upload-icon"><i class="ti ti-video" aria-hidden="true"></i></div>
+              <div class="upload-text">Click to upload video</div>
+              <div class="upload-hint">MP4, MOV, AVI — max 500MB</div>
+              <div class="upload-name" id="videoFileName"></div>
+            </div>
+          </div>
+          <div>
+            <label>Audio File</label>
+            <div class="upload-area" id="audioUpload">
+              <input type="file" accept="audio/*" onchange="handleFileUpload(this,'audioUpload','audioFileName')" />
+              <div class="upload-icon"><i class="ti ti-music" aria-hidden="true"></i></div>
+              <div class="upload-text">Click to upload audio</div>
+              <div class="upload-hint">MP3, WAV, AAC — max 100MB</div>
+              <div class="upload-name" id="audioFileName"></div>
+            </div>
+          </div>
+        </div>
+        <div class="input-row" style="margin-top:4px;">
+          <div>
+            <label>Audio Offset (seconds)</label>
+            <input type="text" id="audioOffset" value="0" />
+          </div>
+          <div>
+            <label>Output Format</label>
+            <input type="text" id="outputFormat" value="MP4 (H.264)" />
+          </div>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="replaceAudio()" id="btn4">
+            <i class="ti ti-replace" aria-hidden="true"></i> Replace Audio & Export
+          </button>
+        </div>
+        <div id="videoOut" style="display:none;">
+          <div class="media-card">
+            <div class="media-card-header">
+              <div class="media-icon-circle"><i class="ti ti-video" style="color:white;font-size:18px;" aria-hidden="true"></i></div>
+              <div>
+                <div class="media-filename">output_final.mp4</div>
+                <div class="media-meta">Processed · Audio replaced successfully</div>
+              </div>
+            </div>
+            <video controls id="videoPlayer" style="max-height:260px;"><source src="" type="video/mp4"></video>
+            <button class="download-btn" id="videoDownload" type="button" onclick="downloadFinalVideo()">
+              <i class="ti ti-download" aria-hidden="true"></i> Download Final Video
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<div id="toast"></div>
+
+<script>
+const API_BASE = 'http://localhost:8000';
+window.__studioMusic = { url: '', filename: 'rhyme_track.mp3' };
+window.__studioVideo = { url: '', filename: 'output_final.mp4' };
+
+function toggleCard(n) {
+  document.getElementById('body'+n).classList.toggle('open');
+  document.getElementById('chev'+n).classList.toggle('open');
+}
+
+function setProgress(step) {
+  for(let i=1;i<=4;i++) {
+    const d = document.getElementById('pd'+i);
+    d.classList.remove('active','done');
+    if(i < step) { d.classList.add('done'); d.innerHTML = '<i class="ti ti-check" style="font-size:12px;"></i>'; }
+    else if(i === step) { d.classList.add('active'); d.textContent = i; }
+    else d.textContent = i;
+  }
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.display = 'block';
+  setTimeout(()=>{ t.style.display='none'; }, 2800);
+}
+
+function setLoading(id, on) {
+  const b = document.getElementById(id);
+  if(on) { b.innerHTML = '<div class="spinner"></div> Processing...'; b.disabled = true; }
+  b.disabled = on;
+}
+
+function escapeHtml(value) {
+  return String(value || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+async function generateRhyme() {
+  const vid = document.getElementById('videoId').value.trim();
+  const prompt = document.getElementById('userPrompt').value.trim();
+  const theme = document.getElementById('theme').value.trim();
+  if(!vid && !prompt && !theme) { showToast('Enter a Video ID, Prompt, or Theme'); return; }
+  setLoading('btn1', true);
+  try {
+    const r = await fetch(`${API_BASE}/generate-rhyme`, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ video_id: vid || null, prompt: prompt || null, theme: theme || null }) });
+    if (!r.ok) {
+      const err = await r.json().catch(() => ({}));
+      throw new Error(err.detail || r.statusText || 'Rhyme request failed');
+    }
+    const d = await r.json();
+    displayRhyme(d);
+  } catch(e) {
+    showToast(e.message || 'Backend unavailable');
+  }
+  document.getElementById('btn1').innerHTML = '<i class="ti ti-sparkles"></i> Process & Generate Rhyme';
+  document.getElementById('btn1').disabled = false;
+}
+
+function displayRhyme(data) {
+  window.__studioRhyme = data;
+  const rhyme = (data.rhyme || '').trim();
+  const rs = (data.rhyme_style || '').trim();
+  const parts = [];
+  parts.push(rhyme);
+  if (rs) parts.push('', '--- Rhyme style ---', rs);
+  const full = parts.join('\n');
+  document.getElementById('rhymeText').textContent = full || JSON.stringify(data, null, 2);
+  const box = document.getElementById('rhymeOut');
+  box.className = 'output-box visible has-content';
+  document.getElementById('rhymeInput2').value = full;
+  document.getElementById('rhymeInput3').value = full;
+  setProgress(2);
+  const b2 = document.getElementById('body2'), c2 = document.getElementById('chev2');
+  if(!b2.classList.contains('open')) { b2.classList.add('open'); c2.classList.add('open'); }
+  showToast('Rhyme generated!');
+}
+
+function stripRhymeSections(text) {
+  if (!text) return '';
+  let t = text.replace(/^\s*Title:\s*.+$/im, '').trim();
+  t = t.split(/\n---\s*Rhyme style\s*---\s*\n/i)[0];
+  t = (typeof t === 'string' ? t : '').split(/\n---\s*Music direction\s*---\s*\n/i)[0];
+  return (t || '').trim();
+}
+
+function getRhymeLyricsForMusic() {
+  const raw = document.getElementById('rhymeInput3').value;
+  const stripped = stripRhymeSections(raw);
+  if (stripped) return stripped;
+  const p = window.__studioRhyme;
+  return (p && p.rhyme) ? p.rhyme.trim() : '';
+}
+
+async function generateScenes() {
+  const raw = document.getElementById('rhymeInput2').value.trim();
+  const rhymeBody = stripRhymeSections(raw) || raw;
+  if(!rhymeBody) { showToast('Rhyme text is empty'); return; }
+  const count = parseInt(document.getElementById('sceneCount').value, 10) || 6;
+  const style = document.getElementById('videoStyle').value.trim() || '3D Pixar animation';
+  const p = window.__studioRhyme || {};
+  setLoading('btn2', true);
+  try {
+    const r = await fetch(`${API_BASE}/generate-scenes`, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({
+      rhyme_description: rhymeBody,
+      scene_count: count,
+      video_style: style,
+      style,
+      title: p.title || null,
+      rhyme_music_style_prompt: p.rhyme_music_style_prompt || null,
+      folder_title: p.folder_title || null
+    }) });
+    if (!r.ok) {
+      const err = await r.json().catch(() => ({}));
+      throw new Error(err.detail || r.statusText || 'Scene request failed');
+    }
+    const d = await r.json();
+    displayScenes(d.scenes || []);
+  } catch(e) {
+    showToast(e.message || 'Scene generation failed');
+  }
+  document.getElementById('btn2').innerHTML = '<i class="ti ti-layout-grid"></i> Generate Scene Prompts';
+  document.getElementById('btn2').disabled = false;
+}
+
+async function enhanceScenePrompt() {
+  const promptInput = document.getElementById('rhymeInput2');
+  const raw = promptInput.value.trim();
+  const sceneBtn = document.getElementById('btn2Enhance');
+  if(!raw) { showToast('Add rhyme prompt text first'); return; }
+  sceneBtn.innerHTML = '<div class="spinner"></div> Enhancing...';
+  sceneBtn.disabled = true;
+  try {
+    const r = await fetch(`${API_BASE}/enhance-scene-prompt`, {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ prompt: raw })
+    });
+    if (!r.ok) {
+      const err = await r.json().catch(() => ({}));
+      throw new Error(err.detail || r.statusText || 'Enhance prompt failed');
+    }
+    const d = await r.json();
+    const enhanced = (d.enhanced_prompt || '').trim();
+    if (!enhanced) throw new Error('Enhanced prompt was empty');
+    promptInput.value = enhanced;
+    showToast('Prompt enhanced');
+  } catch(e) {
+    showToast(e.message || 'Prompt enhance failed');
+  }
+  sceneBtn.innerHTML = '<i class="ti ti-magic-stick" aria-hidden="true"></i> Enhance Prompt';
+  sceneBtn.disabled = false;
+}
+
+function displayScenes(scenes) {
+  document.getElementById('scenesGrid').innerHTML = scenes.map((s,i) =>
+    `<div class="scene-card">
+      <div class="scene-card-header">
+        <div class="scene-card-title-wrap">
+          <span class="scene-num-badge">Scene ${i+1}</span>
+          <span class="scene-title">${escapeHtml(s.title || `Scene ${i+1}`)}</span>
+        </div>
+        <button class="copy-btn" onclick="copyScene(${i})"><i class="ti ti-copy" aria-hidden="true"></i> Copy</button>
+      </div>
+      <p class="scene-desc">${escapeHtml(s.description || s)}</p>
+    </div>`
+  ).join('');
+  document.getElementById('scenesOut').style.display = 'block';
+  setProgress(3);
+  const b3 = document.getElementById('body3'), c3 = document.getElementById('chev3');
+  if(!b3.classList.contains('open')) { b3.classList.add('open'); c3.classList.add('open'); }
+  showToast(`${scenes.length} scenes generated!`);
+}
+
+async function generateMusic() {
+  const lyrics = getRhymeLyricsForMusic();
+  if(!lyrics) { showToast('Rhyme lyrics are empty'); return; }
+  const style = document.getElementById('musicStyle').value;
+  const dur = parseInt(document.getElementById('duration').value, 10) || 60;
+  const p = window.__studioRhyme || {};
+  setLoading('btn3', true);
+  try {
+    const r = await fetch(`${API_BASE}/generate-music`, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({
+      rhyme_description: lyrics,
+      style,
+      duration: dur,
+      rhyme_music_style_prompt: p.rhyme_music_style_prompt || null,
+      folder_title: p.folder_title || null
+    }) });
+    if (!r.ok) {
+      const err = await r.json().catch(() => ({}));
+      throw new Error(err.detail || r.statusText || 'Music request failed');
+    }
+    const d = await r.json();
+    const path = d.audio_url || d.url || d.file_url;
+    const url = path && path.startsWith('http') ? path : (API_BASE.replace(/\/?$/, '') + (path || ''));
+    const filename = d.filename || 'rhyme_track.mp3';
+    document.getElementById('audioPlayer').src = url;
+    document.getElementById('musicTitle').textContent = filename;
+    document.getElementById('musicMeta').textContent = `Generated · ${dur}s`;
+    window.__studioMusic = { url, filename };
+    document.getElementById('musicOut').style.display = 'block';
+    setProgress(4);
+    const b4 = document.getElementById('body4'), c4 = document.getElementById('chev4');
+    if(!b4.classList.contains('open')) { b4.classList.add('open'); c4.classList.add('open'); }
+    showToast('Music ready');
+  } catch(e) {
+    showToast(e.message || 'Music generation failed');
+  }
+  document.getElementById('btn3').innerHTML = '<i class="ti ti-music"></i> Generate Music';
+  document.getElementById('btn3').disabled = false;
+}
+
+async function downloadGeneratedMusic() {
+  const info = window.__studioMusic || {};
+  const url = (info.url || '').trim();
+  const filename = (info.filename || 'rhyme_track.mp3').trim() || 'rhyme_track.mp3';
+  if (!url) {
+    showToast('Generate music first');
+    return;
+  }
+  try {
+    const r = await fetch(url);
+    if (!r.ok) throw new Error('Failed to download audio');
+    const blob = await r.blob();
+    const blobUrl = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = blobUrl;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(blobUrl);
+    showToast('Audio download started');
+  } catch (e) {
+    showToast(e.message || 'Audio download failed');
+  }
+}
+
+async function replaceAudio() {
+  const vf = document.querySelector('#videoUpload input[type=file]').files[0];
+  const af = document.querySelector('#audioUpload input[type=file]').files[0];
+  if(!vf || !af) { showToast('Upload both video and audio files'); return; }
+  setLoading('btn4', true);
+  const fd = new FormData();
+  fd.append('video', vf); fd.append('audio', af);
+  fd.append('offset', document.getElementById('audioOffset').value || '0');
+  try {
+    const r = await fetch(`${API_BASE}/replace-audio`, { method:'POST', body: fd });
+    if (!r.ok) {
+      const err = await r.json().catch(() => ({}));
+      throw new Error(err.detail || r.statusText || 'Replace audio failed');
+    }
+    const blob = await r.blob();
+    const url = URL.createObjectURL(blob);
+    document.getElementById('videoPlayer').src = url;
+    window.__studioVideo = { url, filename: 'output_final.mp4' };
+    showToast('Audio replaced! Video ready.');
+  } catch(e) {
+    showToast(e.message || 'Replace audio failed');
+  }
+  document.getElementById('videoOut').style.display = 'block';
+  document.getElementById('btn4').innerHTML = '<i class="ti ti-replace"></i> Replace Audio & Export';
+  document.getElementById('btn4').disabled = false;
+}
+
+function downloadFinalVideo() {
+  const info = window.__studioVideo || {};
+  const url = (info.url || '').trim();
+  const filename = (info.filename || 'output_final.mp4').trim() || 'output_final.mp4';
+  if (!url) {
+    showToast('Generate final video first');
+    return;
+  }
+  try {
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    showToast('Video download started');
+  } catch (e) {
+    showToast(e.message || 'Video download failed');
+  }
+}
+
+function handleFileUpload(input, areaId, nameId) {
+  const f = input.files[0];
+  if(f) {
+    document.getElementById(nameId).textContent = f.name;
+    document.getElementById(areaId).style.borderColor = 'var(--blue)';
+  }
+}
+
+function copyText() {
+  navigator.clipboard.writeText(document.getElementById('rhymeText').textContent).then(()=>showToast('Copied!'));
+}
+
+function copyScenes() {
+  const text = Array.from(document.querySelectorAll('.scene-card')).map((c,i)=>{
+    return `Scene ${i+1}: ${c.querySelector('.scene-title')?.textContent||''}\n${c.querySelector('.scene-desc')?.textContent||''}`;
+  }).join('\n\n');
+  navigator.clipboard.writeText(text).then(()=>showToast('All scenes copied!'));
+}
+
+function copyScene(index) {
+  const cards = Array.from(document.querySelectorAll('.scene-card'));
+  const scene = cards[index];
+  if (!scene) return;
+  const title = scene.querySelector('.scene-title')?.textContent || `Scene ${index+1}`;
+  const desc = scene.querySelector('.scene-desc')?.textContent || '';
+  navigator.clipboard.writeText(`${title}\n${desc}`.trim()).then(()=>showToast(`${title} copied!`));
+}
+
+function clearStep1() {
+  ['videoId','userPrompt','theme'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('rhymeOut').className = 'output-box';
+  window.__studioRhyme = null;
+  setProgress(1);
+}
+
+setProgress(1);
+</script>
+</body>
+</html>

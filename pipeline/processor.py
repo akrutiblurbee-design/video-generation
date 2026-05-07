@@ -6,9 +6,9 @@ Steps 5–14 — Process each short:
   8.  Needs transcription?
   9a. Whisper transcription
   9b. Use existing captions
-  10. FFmpeg frame extraction
-  11. Build OpenAI request
-  12. OpenAI vision analysis
+  10. (optional) FFmpeg frame extraction
+  11. Build Gemini request with video URL
+  12. Gemini JSON analysis
   13. Parse AI analysis + compute viral score
   14. (removed) Persist output via JSON in main pipeline
 """
@@ -27,7 +27,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional
 
-import openai
+from google import genai
 
 from config import Config
 
@@ -98,15 +98,9 @@ async def _process_one(short: dict) -> dict:
         log.warning("[%s] No video or captions — skipping transcription.", video_id)
         transcript = ""
 
-    # Step 10 — FFmpeg frame extraction
-    frames_b64 = []
-    if mp4_path and os.path.exists(mp4_path):
-        log.info("[%s] Step 10: Extracting frames.", video_id)
-        frames_b64 = await _extract_frames(mp4_path, video_id)
-
-    # Step 11-12 — OpenAI vision analysis
-    log.info("[%s] Step 11-12: Running OpenAI vision analysis.", video_id)
-    ai_analysis = await _openai_vision_analysis(short, transcript, frames_b64)
+    # Step 11-12 — Gemini video analysis (URL-based)
+    log.info("[%s] Step 11-12: Running Gemini video analysis.", video_id)
+    ai_analysis = await _gemini_video_analysis(short, transcript)
 
     # Step 13 — Parse AI analysis + compute viral score
     short.update(ai_analysis)
@@ -338,11 +332,11 @@ async def _run_subprocess_capture(cmd: list[str]) -> tuple[int, bytes, bytes]:
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Steps 11-12 — OpenAI Vision Analysis
+# Steps 11-12 — Gemini Video Analysis
 # ─────────────────────────────────────────────────────────────────────────────
 
 ANALYSIS_PROMPT = """You are a senior viral-content strategist and visual storyteller.
-Analyse this YouTube Short deeply using BOTH the transcript and image frames.
+Analyse this YouTube Short deeply using the transcript and metadata. The video URL is provided.
 Be specific and concrete. Avoid generic filler language.
 Return ONLY valid JSON.
 
@@ -354,6 +348,7 @@ Video metadata:
 - Comments: {comments}
 - Duration: {duration}s
 - Upload date: {upload_date}
+- Video URL: {video_url}
 
 Transcript:
 {transcript}
@@ -396,52 +391,43 @@ Return ONLY this JSON structure (no markdown, no explanation):
 }}"""
 
 
-async def _openai_vision_analysis(
-    short: dict, transcript: str, frames_b64: list[str]
-) -> dict:
-    if not Config.OPENAI_API_KEY:
-        log.warning("No OpenAI API key — skipping analysis.")
+def _get_gemini_api_key() -> str:
+    return (Config.GEMINI_API_KEY or "").strip()
+
+
+async def _gemini_video_analysis(short: dict, transcript: str) -> dict:
+    gemini_api_key = _get_gemini_api_key()
+    if not gemini_api_key:
+        log.warning("No Gemini API key — skipping analysis.")
         return _empty_analysis(short=short)
 
-    client = openai.AsyncOpenAI(api_key=Config.OPENAI_API_KEY, timeout=60)
-
-    # Build message content with frames
-    content = []
-
-    # Add frames as vision inputs
-    for b64 in frames_b64:
-        content.append({
-            "type": "image_url",
-            "image_url": {
-                "url": f"data:image/jpeg;base64,{b64}",
-                "detail": "high",
-            },
-        })
-
-    # Add the text prompt
-    content.append({
-        "type": "text",
-        "text": ANALYSIS_PROMPT.format(
-            title=short.get("title", ""),
-            channel=short.get("channel", ""),
-            views=short.get("views", 0),
-            likes=short.get("likes", 0),
-            comments=short.get("comments", 0),
-            duration=short.get("duration", 0),
-            upload_date=short.get("upload_date", ""),
-            transcript=transcript[:2000] if transcript else "No transcript available.",
-        ),
-    })
+    client = genai.Client(api_key=gemini_api_key)
+    model = (
+        (Config.GEMINI_VIDEO_ANALYSIS_MODEL or "").strip()
+        or (Config.GEMINI_TEXT_MODEL or "").strip()
+        or "gemini-3.1-flash-lite-preview"
+    )
+    prompt = ANALYSIS_PROMPT.format(
+        title=short.get("title", ""),
+        channel=short.get("channel", ""),
+        views=short.get("views", 0),
+        likes=short.get("likes", 0),
+        comments=short.get("comments", 0),
+        duration=short.get("duration", 0),
+        upload_date=short.get("upload_date", ""),
+        video_url=short.get("url", ""),
+        transcript=transcript[:3000] if transcript else "No transcript available.",
+    )
 
     last_error = None
     for attempt in range(1, 4):
         try:
-            response = await client.chat.completions.create(
-                model=Config.OPENAI_VISION_MODEL,
-                max_tokens=1600,
-                messages=[{"role": "user", "content": content}],
+            response = await asyncio.to_thread(
+                client.models.generate_content,
+                model=model,
+                contents=prompt,
             )
-            raw = response.choices[0].message.content.strip()
+            raw = (response.text or "").strip()
             # Strip markdown fences if present
             raw = re.sub(r"^```json\s*|```$", "", raw, flags=re.MULTILINE).strip()
             return json.loads(raw)
@@ -449,14 +435,14 @@ async def _openai_vision_analysis(
             # Respect cooperative cancellation (for Ctrl+C or task cancellation).
             raise
         except json.JSONDecodeError as e:
-            log.error("OpenAI analysis returned non-JSON output: %s", e)
+            log.error("Gemini analysis returned non-JSON output: %s", e)
             return _empty_analysis(short=short)
-        except (openai.APIConnectionError, openai.APITimeoutError, openai.RateLimitError) as e:
+        except Exception as e:
             last_error = e
             if attempt < 3:
                 backoff_seconds = attempt * 2
                 log.warning(
-                    "OpenAI request failed on attempt %d/3 (%s). Retrying in %ds.",
+                    "Gemini request failed on attempt %d/3 (%s). Retrying in %ds.",
                     attempt,
                     e.__class__.__name__,
                     backoff_seconds,
@@ -464,11 +450,8 @@ async def _openai_vision_analysis(
                 await asyncio.sleep(backoff_seconds)
                 continue
             break
-        except openai.OpenAIError as e:
-            log.error("OpenAI analysis failed: %s", e)
-            return _empty_analysis(short=short)
 
-    log.error("OpenAI analysis failed after retries: %s", last_error)
+    log.error("Gemini analysis failed after retries: %s", last_error)
     return _empty_analysis(short=short)
 
 
@@ -483,7 +466,7 @@ def _empty_analysis(short: Optional[dict] = None) -> dict:
             "editing_and_pacing": "",
             "on_screen_text_and_graphics": "",
             "audio_and_voice_pattern": "",
-            "recreation_blueprint": "Retry processing when video/captions/OpenAI are available.",
+            "recreation_blueprint": "Retry processing when video/captions/Gemini are available.",
         },
         "hook": "Watch this short's key moment.",
         "hook_style": "unknown",

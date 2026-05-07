@@ -29,14 +29,41 @@ def _parse_scene_prompts(file_path: Path) -> list[str]:
 
     lines = file_path.read_text(encoding="utf-8").splitlines()
     prompts: list[str] = []
-    for line in lines:
+    idx = 0
+    while idx < len(lines):
+        line = lines[idx]
         match = re.match(r"^\s*Visual Prompt:\s*(.+)\s*$", line)
-        if match:
-            prompts.append(match.group(1).strip())
+        if not match:
+            idx += 1
+            continue
+
+        chunk: list[str] = [match.group(1).strip()]
+        idx += 1
+        while idx < len(lines):
+            next_line = lines[idx]
+            if re.match(r"^\s*(Motion/Action|Continuity|Scene\s+\d+|Rhyme Reference|Duration):", next_line):
+                break
+            if next_line.strip():
+                chunk.append(next_line.strip())
+            idx += 1
+        prompts.append(" ".join(chunk).strip())
 
     if not prompts:
         raise ValueError(f"No 'Visual Prompt:' lines found in: {file_path}")
     return prompts
+
+
+def _force_cartoon_3d_prompt(prompt: str) -> str:
+    style_lock = (
+        'Render as "3d animation cartoon" only, Cocomelon-like preschool style, '
+        "stylized animated characters, soft rounded shapes, toy-like materials, bright pastel colors, "
+        "friendly exaggerated expressions, child-safe world."
+    )
+    realism_block = (
+        "Hard constraints: do NOT generate live-action, do NOT generate photorealistic humans, "
+        "do NOT generate real kids, no camera-phone realism, no documentary style."
+    )
+    return f"{style_lock} {realism_block} {prompt}".strip()
 
 
 def _get_api_key_from_env() -> str:
@@ -231,10 +258,11 @@ def main() -> None:
     prompt_index = 0
 
     print(f"Generating initial {args.initial_seconds}s clip...")
+    initial_prompt = _force_cartoon_3d_prompt(scene_prompts[prompt_index])
     current_video = _generate_video(
         client=client,
         model=args.model,
-        prompt=scene_prompts[prompt_index],
+        prompt=initial_prompt,
         duration_seconds=args.initial_seconds,
         aspect_ratio=args.aspect_ratio,
         poll_seconds=args.poll_seconds,
@@ -250,7 +278,7 @@ def main() -> None:
     step = 1
     while current_seconds < args.target_seconds:
         prompt_index = (prompt_index + 1) % len(scene_prompts)
-        next_prompt = scene_prompts[prompt_index]
+        next_prompt = _force_cartoon_3d_prompt(scene_prompts[prompt_index])
         print(
             f"Extending video (step {step}) by {args.extend_step_seconds}s "
             f"toward {args.target_seconds}s target..."

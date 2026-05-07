@@ -43,6 +43,13 @@ class Config:
     OPENAI_API_KEY: str = os.getenv("OPENAI_API_KEY", "")
     OPENAI_MODEL: str = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
     OPENAI_VISION_MODEL: str = os.getenv("OPENAI_VISION_MODEL", OPENAI_MODEL)
+    
+    # ── Gemini (video analysis / generation helpers) ───────────────────────
+    GEMINI_API_KEY: str = os.getenv("GEMINI_API_KEY", os.getenv("GOOGLE_API_KEY", ""))
+    GEMINI_TEXT_MODEL: str = os.getenv("GEMINI_TEXT_MODEL", "gemini-2.5-flash")
+    GEMINI_VIDEO_ANALYSIS_MODEL: str = os.getenv(
+        "GEMINI_VIDEO_ANALYSIS_MODEL", "gemini-3.1-flash-lite-preview"
+    )
 
     # ── Musicful (kids rhyme background music generation) ───────────────────
     MUSICFUL_ENABLED: bool = os.getenv("MUSICFUL_ENABLED", "true").lower() == "true"

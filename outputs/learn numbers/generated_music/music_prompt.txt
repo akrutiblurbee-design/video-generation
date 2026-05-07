@@ -1,0 +1,17 @@
+Style guidance:
+User Prompt: create kids cheerful rhyme that can help then to learn numbers. Create cheerful, child-safe instrumental nursery music for 60 seconds, with a soft, gentle intro (do not make the beginning too heavy), gentle percussion, playful marimba and ukulele textures, bright major-key harmony, steady 120 BPM groove, no vocals, smooth loop-friendly ending.
+
+Lyrics:
+Clap, clap, little hands, clap in a row,
+Tap, tap, tiny toes, off we go!
+Share your smile, bright and wide,
+Friends together, side by side.
+Zoom goes the toy car, round and round,
+Happy giggles are the best sound.
+Take a turn, then let it be,
+Sharing makes it fun for three!
+Build a tower, one, two, three,
+Cheer for friends so happily,
+Play, learn, laugh, in harmony!
+
+Target duration: 60s

@@ -8,11 +8,12 @@ from __future__ import annotations
 import argparse
 import shutil
 import subprocess
+from datetime import datetime
 from pathlib import Path
 
 
-DEFAULT_VIDEO_PATH = "Scene_7_Rhyme_Reference__The_202605061201.mp4"
-DEFAULT_AUDIO_PATH = "outputs\wheels on the bus\generated_music\music_60s.mp3"
+DEFAULT_VIDEO_PATH = "Scene_9_Rhyme_Reference__Build_202605061559.mp4"
+DEFAULT_AUDIO_PATH = "outputs\learn numbers\generated_music\music_60s.mp3"
 DEFAULT_OUTPUT_PATH = "outputs/final_videos/final_with_generated_music.mp4"
 
 
@@ -67,6 +68,13 @@ def _replace_audio(video_path: Path, audio_path: Path, output_path: Path) -> Non
         raise RuntimeError(f"ffmpeg failed.\nSTDOUT:\n{result.stdout}\nSTDERR:\n{result.stderr}")
 
 
+def _build_timestamped_output_path(output_path: Path) -> Path:
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    stem = output_path.stem
+    suffix = output_path.suffix or ".mp4"
+    return output_path.with_name(f"{stem}_{timestamp}{suffix}")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Replace video audio with generated music")
     parser.add_argument("--video", type=str, default=DEFAULT_VIDEO_PATH, help="Path to input video.")
@@ -76,7 +84,7 @@ def main() -> None:
 
     video_path = Path(args.video)
     audio_path = Path(args.audio)
-    output_path = Path(args.output)
+    output_path = _build_timestamped_output_path(Path(args.output))
 
     _replace_audio(video_path, audio_path, output_path)
     print(f"Saved final video: {output_path}")

@@ -12,6 +12,7 @@ import json
 import os
 import re
 from pathlib import Path
+from typing import Any
 
 from dotenv import load_dotenv
 from google import genai
@@ -20,7 +21,7 @@ from google.genai import types
 
 
 DEFAULT_PROMPTS_PATH = str(
-    Path("outputs") / "wheels on the bus" / "prompts" / "rhyme_and_scene_prompts.txt"
+    Path("outputs") / "learn numbers" / "prompts" / "rhyme_and_scene_prompts.txt"
 )
 DEFAULT_OUTPUT_ROOT = "outputs"
 DEFAULT_MODEL = "lyria-3-pro-preview"
@@ -192,7 +193,7 @@ def _generate_music_bytes(
         f"Requirements: generate exactly {target_seconds} seconds of audio (do not exceed), "
         "STRICT intro rule: instrumental intro must be ONLY 3-4 seconds, then vocals must begin immediately "
         "at or before second 4. Do not create a longer intro. "
-        "Arrangement timeline: 0-4s soft intro only, 4s onward full song with vocals and rhythm. "
+        "Arrangement timeline: 0-3s soft intro only, 3s onward full song with vocals and rhythm. "
         "No long instrumental opening, clear vocal melody, playful arrangement, and a clear musical ending "
         f"right at {target_seconds} seconds."
     )
@@ -347,6 +348,77 @@ def _build_output_dir(root: Path, video_title: str) -> Path:
     target = root / video_title / "generated_music"
     target.mkdir(parents=True, exist_ok=True)
     return target
+
+
+def generate_music_for_studio(
+    *,
+    rhyme_lyrics: str,
+    rhyme_music_style_prompt: str = "",
+    user_music_style: str = "",
+    duration_seconds: int = 60,
+    output_root: Path | None = None,
+    folder_title: str = "studio_music",
+    model: str | None = None,
+    api_version: str | None = None,
+) -> dict[str, Any]:
+    """Generate Lyria audio from rhyme lyrics plus combined music-style prompts (Studio API)."""
+    load_dotenv()
+    if duration_seconds != 60:
+        raise ValueError("Only 60-second output is supported.")
+    parts = [user_music_style.strip(), rhyme_music_style_prompt.strip()]
+    style_prompt = ". ".join(p for p in parts if p)
+    if not style_prompt:
+        style_prompt = (
+            "Cheerful child-safe instrumental nursery music for about 60 seconds, gentle intro, steady groove."
+        )
+    api_key = _get_api_key_from_env()
+    safe_title = _sanitize_for_dir(folder_title)
+    root = output_root or Path(DEFAULT_OUTPUT_ROOT)
+    output_dir = _build_output_dir(root, safe_title)
+    req_model = model or os.getenv("GEMINI_MUSIC_MODEL", DEFAULT_MODEL)
+    req_ver = api_version or os.getenv("GEMINI_API_VERSION", DEFAULT_API_VERSION)
+    (
+        _client,
+        selected_api_version,
+        selected_model,
+        _available_models,
+        _used_model_fallback,
+        _used_version_fallback,
+    ) = _resolve_client_model_and_version(
+        api_key=api_key,
+        requested_api_version=req_ver,
+        requested_model=req_model,
+    )
+    audio_bytes, mime_type = _generate_music_bytes(
+        api_key=api_key,
+        api_version=selected_api_version,
+        model=selected_model,
+        lyrics=rhyme_lyrics,
+        style_prompt=style_prompt,
+        target_seconds=duration_seconds,
+        output_dir=output_dir,
+    )
+    ext = _extension_for_mime(mime_type)
+    output_audio = output_dir / f"music_{duration_seconds}s.{ext}"
+    output_audio.write_bytes(audio_bytes)
+    full_prompt = (
+        f"Style guidance:\n{style_prompt}\n\n"
+        f"Lyrics:\n{rhyme_lyrics}\n\n"
+        f"Target duration: {duration_seconds}s"
+    )
+    (output_dir / "music_prompt.txt").write_text(full_prompt, encoding="utf-8")
+    (output_dir / "music_mime_type.txt").write_text(mime_type, encoding="utf-8")
+
+    rel = Path(safe_title) / "generated_music" / output_audio.name
+    url_path = rel.as_posix()
+    return {
+        "audio_path": str(output_audio),
+        "audio_url": f"/outputs/{url_path}",
+        "filename": output_audio.name,
+        "mime_type": mime_type,
+        "model": selected_model,
+        "style_prompt_used": style_prompt,
+    }
 
 
 def main() -> None:

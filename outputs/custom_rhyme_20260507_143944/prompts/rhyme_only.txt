@@ -1,0 +1,18 @@
+Title: The Happy Number Train
+
+=== RHYME ===
+One little engine chugging down the track,
+Two shiny carriages following the back.
+Three friendly bunnies hop along the way,
+Four yellow ducklings come outside to play.
+Five bright balloons floating in the sky,
+Six happy birds go soaring way up high.
+Seven golden stars twinkle in the light,
+Eight sleepy puppies say a soft goodnight,
+Nine counting friends make everything feel right.
+
+=== RHYME STYLE ===
+AABBCCDDD, rhythmic and whimsical, ages 3-7
+
+=== RHYME MUSIC STYLE PROMPT ===
+A gentle, slow-building 60-second children's nursery track starting with a soft, melodic glockenspiel and light acoustic guitar, gradually adding a cheerful, bouncy marimba rhythm and light flute, upbeat and magical tempo, no heavy percussion, bright and clean production.
